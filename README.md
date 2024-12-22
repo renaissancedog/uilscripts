@@ -1,0 +1,1 @@
+tri.py is for triangles<br>
