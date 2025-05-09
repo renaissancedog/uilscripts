@@ -1,27 +1,30 @@
 import math
 
-def simplify(numerator, denominator):
-  if math.gcd(numerator, denominator) == denominator:
-    return int(numerator/denominator)
-  elif math.gcd(numerator, denominator) == 1:
-    return str(int(numerator)) + "/" + str(int(denominator))
-  else:
-    top = int(numerator / math.gcd(numerator, denominator))
-    bottom = int(denominator / math.gcd(numerator, denominator))
-    return str(top) + "/" + str(bottom)
-
 ax=int(input("Point A X: "))
 ay=int(input("Point A Y: "))
 bx=int(input("Point B X: "))
 by=int(input("Point B Y: "))
 cx=int(input("Point C X: "))
 cy=int(input("Point C Y: "))
-absl=((by-ay)/(bx-ax))
-bcsl=((by-cy)/(bx-cx))
-acsl=((cy-ay)/(cx-ax))
-abfor="AB Formula: y = "+str(simplify(by-ay, bx-ax))+"x + "+str(ay-absl*ax)
-bcfor="BC Formula: y = "+str(simplify(by-cy, bx-cx))+"x + "+str(by-bcsl*bx)
-acfor="AB Formula: y = "+str(simplify(cy-ay, cx-ax))+"x + "+str(cy-acsl*cx)
+
+if bx != ax:
+  absl = ((by - ay) / (bx - ax))
+  abfor = "AB Formula: y = " + str(absl) + "x + " + str(ay - absl * ax)
+else:
+  abfor = "AB Formula: x = " + str(ax)
+
+if bx != cx:
+  bcsl = ((by - cy) / (bx - cx))
+  bcfor = "BC Formula: y = " + str(bcsl) + "x + " + str(by - bcsl * bx)
+else:
+  bcfor = "BC Formula: x = " + str(bx)
+
+if cx != ax:
+  acsl = ((cy - ay) / (cx - ax))
+  acfor = "AC Formula: y = " + str(acsl) + "x + " + str(cy - acsl * cx)
+else:
+  acfor = "AC Formula: x = " + str(cx)
+
 ab=math.sqrt((ax-bx)**2+(ay-by)**2)
 bc=math.sqrt((bx-cx)**2+(by-cy)**2)
 ac=math.sqrt((ax-cx)**2+(ay-cy)**2)
